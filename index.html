@@ -1,0 +1,666 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice HoSeL</title>
+
+<style>
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+margin:0;
+padding:20px;
+background:#f2f2f2;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.2);
+margin-bottom:20px;
+}
+
+h1{
+text-align:center;
+color:#005bac;
+}
+
+.section{
+margin-bottom:20px;
+border:1px solid #ddd;
+padding:15px;
+border-radius:8px;
+}
+
+.section-title{
+font-size:20px;
+font-weight:bold;
+margin-bottom:15px;
+color:#005bac;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.field{
+display:flex;
+flex-direction:column;
+}
+
+label{
+font-size:14px;
+margin-bottom:5px;
+font-weight:bold;
+}
+
+input,select,textarea{
+padding:10px;
+border:1px solid #ccc;
+border-radius:5px;
+width:100%;
+}
+
+button{
+padding:12px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-top:15px;
+margin-right:10px;
+font-weight:bold;
+}
+
+.save{
+background:#005bac;
+color:white;
+}
+
+.evaluate{
+background:orange;
+color:white;
+}
+
+.submit{
+background:green;
+color:white;
+}
+
+.hidden{
+display:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Practice HoSeL</h1>
+
+<!-- BOD 1 -->
+<div id="bod1">
+
+<div class="section">
+
+<div class="section-title">
+1st BOD
+</div>
+
+<h3>Personal Data</h3>
+
+<div class="grid">
+
+<div class="field">
+<label>First Name</label>
+<input id="fname">
+</div>
+
+<div class="field">
+<label>Middle Name</label>
+<input id="mname">
+</div>
+
+<div class="field">
+<label>Last Name</label>
+<input id="lname">
+</div>
+
+<div class="field">
+<label>Gender</label>
+<select id="gender">
+<option>Male</option>
+<option>Female</option>
+</select>
+</div>
+
+<div class="field">
+<label>Date of Birth</label>
+<input type="date" id="dob">
+</div>
+
+<div class="field">
+<label>Place of Birth</label>
+<input id="birth">
+</div>
+
+<div class="field">
+<label>Mother Maiden Name</label>
+<input id="mother">
+</div>
+
+<div class="field">
+<label>Preferred Language</label>
+<input id="language">
+</div>
+
+</div>
+
+<h3>Primary ID Proof</h3>
+
+<div class="grid">
+
+<div class="field">
+<label>Primary ID</label>
+<select id="primaryID">
+<option>Philsys</option>
+<option>Postal</option>
+<option>UMID</option>
+<option>Drivers</option>
+<option>Voters</option>
+</select>
+</div>
+
+<div class="field">
+<label>ID Number</label>
+<input id="IDnumber">
+</div>
+
+<div class="field">
+<label>Take Photo</label>
+<input type="file" accept="image/*" capture="environment">
+</div>
+
+</div>
+
+<h3>Contact To Client</h3>
+
+<div class="grid">
+
+<div class="field">
+<label>Email</label>
+<input id="email">
+</div>
+
+<div class="field">
+<label>Mobile Number</label>
+<input id="mobile">
+</div>
+
+</div>
+
+<h3>Contact Address</h3>
+
+<div class="grid">
+
+<div class="field">
+<label>Province</label>
+<input id="province">
+</div>
+
+<div class="field">
+<label>Municipality</label>
+<input id="municipality">
+</div>
+
+<div class="field">
+<label>Barangay</label>
+<input id="barangay">
+</div>
+
+<div class="field">
+<label>Address</label>
+<input id="address">
+</div>
+
+<div class="field">
+<label>Landmark</label>
+<input id="landmark">
+</div>
+
+</div>
+
+<h3>Additional Personal Data</h3>
+
+<div class="grid">
+
+<div class="field">
+<label>Marital Status</label>
+<input id="maritalstatus">
+</div>
+
+<div class="field">
+<label>Education</label>
+<input id="education">
+</div>
+
+<div class="field">
+<label>House Type</label>
+<input id="housetype">
+</div>
+
+<div class="field">
+<label>Dependent Persons</label>
+<input id="dependents">
+</div>
+
+</div>
+
+<button class="save" onclick="saveDraft()">
+Save Draft
+</button>
+
+<button class="evaluate" type="button" onclick="nextBod()">
+Send To Evaluation
+</button>
+
+</div>
+</div>
+
+
+<!-- BOD 2 -->
+
+<div id="bod2" class="hidden">
+
+<div class="container">
+
+<div class="section-title">
+2nd BOD
+</div>
+
+<h3>Contact Information</h3>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Contact Person 1</label>
+
+<input id="contact1">
+
+</div>
+
+<div class="field">
+
+<label>Relationship</label>
+
+<select id="relation1">
+
+<option>Parent</option>
+<option>Sibling</option>
+<option>Spouse</option>
+<option>Friend</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Mobile Number</label>
+
+<input id="contactMobile1">
+
+</div>
+
+<div class="field">
+
+<label>Contact Person 2</label>
+
+<input id="contact2">
+
+</div>
+
+<div class="field">
+
+<label>Relationship</label>
+
+<select id="relation2">
+
+<option>Parent</option>
+<option>Sibling</option>
+<option>Spouse</option>
+<option>Friend</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Mobile Number</label>
+
+<input id="contactMobile2">
+
+</div>
+
+</div>
+
+<div class="section">
+<h3>Other Documents</h3>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Income Proof</label>
+
+<select id="proof">
+
+<option>Salary Slip</option>
+<option>GSIS/SSS Contribution Table</option>
+<option>COE</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Take Photo</label>
+
+<input
+type="file"
+accept="image/*"
+capture="environment">
+
+</div>
+
+</div>
+
+
+<div class="section">
+<h4>Guide</h4>
+
+<p>
+Loyalty Card + Proof of Income Amount + Loyalty Card Expiry
+</p>
+
+<b>Loyalty Codes</b>
+
+<ul>
+
+<b>Loyalty Card + Proof of Income amt.  + Loyalty card Expiry</b>
+
+<li>PAGIBIG = A</li>
+<li>TNAP = T</li>
+<li>Perks = P</li>
+<li>TNAP Elite = E</li>
+<li>TNAP Gold = G</li>
+<li>PWallet = P</li>
+
+</ul>
+
+<b>Income Proof Rules </b>
+<li>If used always use 00 as the Proof of Income amt.</li>
+<ul>
+
+<li>Single receipt purchase minimum 3k</li>
+
+<li>Payslip updated within 1 month</li>
+
+<li>COE should include compensation</li>
+
+<li>GSIS/SSS latest 3 months proof</li>
+
+</ul>
+
+<b>Expiry of loyalty card</b>
+
+<li>PAG-IBIG expiry is MMDDYYYY</li>
+<ul>
+
+<b>Examples</b>
+
+<li>PAGIBIG + Worth 3k purchase + Loyalty card expiry = A03MMDDYYYY</li>
+<li>Perks + Worth 21k purchase + 10/13/2028
+= P2110132028</li>
+<li>TNAP + Payslip + 08/20/2024
+= T0008202024</li>
+<li>TNAP + 3k purchase
+= T03</li>
+
+
+</ul>
+
+
+<div class="grid">
+
+<div class="field">
+<div class="section">
+<h3>Lead ID document</h3>
+<label>Lead ID Document</label>
+
+<input
+id="leadID"
+placeholder="Input manually">
+
+<label>Take Photo</label>
+<input
+type="file"
+accept="image/*"
+capture="environment">
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+<h3>Employment Information</h3>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Employment Type</label>
+
+<select id="employment">
+
+<option>Employed</option>
+<option>Self-employed</option>
+<option>Remmitance</option>
+
+</select>
+
+</div>
+
+<div class="field">
+<label>Employer Industry</label>
+<input id="industry">
+</div>
+
+<div class="field">
+<label>Company Name</label>
+<input id="company">
+</div>
+
+<div class="field">
+<label>Length of Work</label>
+<input id="workLength">
+</div>
+
+<div class="field">
+<label>Company Number</label>
+<input id="companyNumber">
+</div>
+
+<div class="field">
+<label>Net Income</label>
+<input id="netIncome">
+</div>
+
+<div class="field">
+<label>Additional Income</label>
+<input id="additionalIncome">
+</div>
+
+<div class="field">
+<label>Monthly Debts</label>
+<input id="debts">
+</div>
+
+</div>
+
+<div class="section">
+<h3>Payment Information</h3>
+
+<select id="payment">
+
+<option>Auto Debit</option>
+<option>Other</option>
+
+</select>
+
+<div class="section">
+<h3>Assigned Card</h3>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Card Type</label>
+
+<input
+value="Personalized Card"
+readonly>
+
+</div>
+
+<div class="field">
+
+<label>Delivery Option</label>
+
+<select>
+
+<option>Client Contact</option>
+<option>Employer</option>
+
+</select>
+
+</div>
+
+</div>
+
+<button class="save" onclick="saveDraft()">
+Save Draft
+</button>
+
+<button class="submit" onclick="submitForm()">
+Submit
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function saveDraft(){
+
+let data={};
+
+document.querySelectorAll(
+"input,select,textarea"
+).forEach(field=>{
+
+if(field.id){
+data[field.id]=field.value;
+}
+
+});
+
+localStorage.setItem(
+"HoSeLDraft",
+JSON.stringify(data)
+);
+
+alert("Draft Saved Successfully");
+}
+
+
+window.onload=function(){
+
+const saved=
+JSON.parse(
+localStorage.getItem(
+"HoSeLDraft"
+));
+
+if(!saved) return;
+
+document.querySelectorAll(
+"input,select,textarea"
+).forEach(field=>{
+
+if(saved[field.id]){
+field.value=saved[field.id];
+}
+
+});
+
+}
+
+
+function nextBod(){
+
+document.getElementById(
+"bod1"
+).classList.add(
+"hidden"
+);
+
+document.getElementById(
+"bod2"
+).classList.remove(
+"hidden"
+);
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function submitForm(){
+
+alert(
+"Application Submitted Successfully"
+);
+
+localStorage.removeItem(
+"HoSeLDraft"
+);
+
+}
+
+</script>
+
+</body>
+</html>

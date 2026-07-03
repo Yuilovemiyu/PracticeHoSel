@@ -1,4 +1,4 @@
-const CACHE_NAME = "hosel-v2";
+const CACHE_NAME = "hosel-v1";
 
 const filesToCache = [
     "./",
